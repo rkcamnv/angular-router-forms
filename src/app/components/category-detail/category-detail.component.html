@@ -1,0 +1,32 @@
+<div class="tui-container">
+  <ng-container *ngIf="category">
+    <p class="tui-text_h3">Category is: {{ category.name }}</p>
+    <p class="mt-10 tui-text_h4 text-gray-500">Products</p>
+    <table class="tui-table mt-10">
+      <tbody>
+        <tr class="tui-table__tr">
+          <th class="tui-table__th tui-table__th_font-size_l font-bold">
+            Title
+          </th>
+          <th class="tui-table__th tui-table__th_font-size_l font-bold">
+            Price
+          </th>
+          <th class="tui-table__th tui-table__th_font-size_l font-bold">
+            Slug
+          </th>
+        </tr>
+        <tr class="tui-table__tr" *ngFor="let product of category.products">
+          <td class="tui-table__td">
+            {{ product.title }}
+          </td>
+          <td class="tui-table__td">
+            <tui-money [value]="product.price" currency="USD"> </tui-money>
+          </td>
+          <td class="tui-table__td">
+            {{ product.slug }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</div>

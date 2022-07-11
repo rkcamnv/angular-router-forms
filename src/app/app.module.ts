@@ -1,6 +1,13 @@
 import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {TuiRootModule, TuiDialogModule, TuiAlertModule, TUI_SANITIZER, TuiButtonModule} from "@taiga-ui/core";
+import {
+  TuiRootModule,
+  TuiDialogModule,
+  TuiAlertModule,
+  TUI_SANITIZER,
+  TuiButtonModule,
+  TuiLoaderModule
+} from "@taiga-ui/core";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -15,6 +22,11 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import {TuiMoneyModule} from "@taiga-ui/addon-commerce";
+import {HttpClientModule} from "@angular/common/http";
+import {TuiTableDirective, TuiTableModule} from "@taiga-ui/addon-table";
+import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
+import {TuiInputModule} from "@taiga-ui/kit";
 
 @NgModule({
   declarations: [
@@ -26,18 +38,24 @@ import {TuiMoneyModule} from "@taiga-ui/addon-commerce";
     UsersComponent,
     CategoriesComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CategoryDetailComponent,
+    CategoryAddComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    TuiRootModule,
-    BrowserAnimationsModule,
-    TuiDialogModule,
-    TuiAlertModule,
-    TuiMoneyModule,
-    TuiButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        TuiRootModule,
+        BrowserAnimationsModule,
+        TuiDialogModule,
+        TuiAlertModule,
+        TuiMoneyModule,
+        TuiButtonModule,
+        HttpClientModule,
+        TuiLoaderModule,
+        TuiTableModule,
+        TuiInputModule
+    ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]
 })

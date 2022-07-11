@@ -1,1 +1,40 @@
-<p>categories works!</p>
+<div class="tui-container">
+  <ng-container *ngIf="categories$ | async as categories; else categoryLoading">
+    <div class="flex justify-end">
+      <button tuiButton size="m" routerLink="/categories/add">Add Category</button>
+    </div>
+    <table class="tui-table mt-10">
+      <tbody>
+        <tr class="tui-table__tr">
+          <th class="tui-table__th tui-table__th_font-size_l font-bold">Id</th>
+          <th class="tui-table__th tui-table__th_font-size_l font-bold">
+            Name
+          </th>
+          <th class="tui-table__th tui-table__th_font-size_l font-bold">
+            Slug
+          </th>
+          <th class="tui-table__th tui-table__th_font-size_l font-bold">
+            Actions
+          </th>
+        </tr>
+        <tr class="tui-table__tr" *ngFor="let category of categories">
+          <td class="tui-table__td">
+            {{ category._id }}
+          </td>
+          <td class="tui-table__td">
+            {{ category.name }}
+          </td>
+          <td class="tui-table__td">
+            {{ category.slug }}
+          </td>
+          <td class="tui-table__td">
+            <button tuiButton size="s" [routerLink]="['/categories', category.slug]">Detail</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #categoryLoading>
+    <tui-loader></tui-loader>
+  </ng-template>
+</div>

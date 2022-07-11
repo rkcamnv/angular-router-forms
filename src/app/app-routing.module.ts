@@ -7,7 +7,9 @@ import {LoginComponent} from "./components/login/login.component";
 import {HomeComponent} from "./components/home/home.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {ProductDetailComponent} from "./components/product-detail/product-detail.component";
-import {AuthGuard} from "../guard/auth.guard";
+import {AuthGuard} from "./guard/auth.guard";
+import {CategoryDetailComponent} from "./components/category-detail/category-detail.component";
+import {CategoryAddComponent} from "./components/category-add/category-add.component";
 
 const routes: Routes = [
   {
@@ -17,22 +19,26 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'products/:id',
     component: ProductDetailComponent,
-    canActivate: [AuthGuard]
+  },
+  {
+    path: 'categories/add',
+    component: CategoryAddComponent,
   },
   {
     path: 'categories',
     component: CategoriesComponent,
-    canActivate: [AuthGuard]
+  },
+  {
+    path: 'categories/:slug',
+    component: CategoryDetailComponent,
   },
   {
     path: 'users',
     component: UsersComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'login',
